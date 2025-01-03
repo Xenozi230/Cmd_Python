@@ -9,7 +9,8 @@
 
 - `help`: to see the avaible commands
 - `color` : to change the cmd color 
-- `exit`: to quit cmd app
+- `crypto`: to see the price of crypto-monaie in live
+- `exit`: to quit cmd app   
 
 
 ## 2. Create .exe
