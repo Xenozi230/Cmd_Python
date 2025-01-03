@@ -20,11 +20,13 @@ For create exe file use :
     For install cx_Freeze
     `pip install cx_Freeze`
     To create an .exe with cx_freeze, use the setup file and run with this command
+
     `python setup.py build`
 
-- Pyinstaller
+- Pyinstaller :
 
     For install pyinstaller
     `pip install pyinstaller`
     to create an .exe with  pyinstaller, use this command 
+
     `pyinstaller --onefile cmd_app.py`
