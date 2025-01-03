@@ -1,6 +1,6 @@
 from cx_Freeze import setup, Executable
 
-# On peut inclure des options ici si nécessaire
+# Options can be included here if necessary
 options = {
     'build_exe': {
         'packages': [],
@@ -15,7 +15,7 @@ executables = [
 setup(
     name='cmd_app',
     version='1.0',
-    description='Application CMD pour suivre les crypto-monnaies',
+    description='Cmd app in python ',
     options=options,
     executables=executables
 )
