@@ -7,9 +7,9 @@
 
 ## 1. Commands
 
-`help`: to see the avaible commands
-`color` : to change the cmd color 
-`exit`: to quit cmd app
+- `help`: to see the avaible commands
+- `color` : to change the cmd color 
+- `exit`: to quit cmd app
 
 
 ## 2. Create .exe
