@@ -13,7 +13,7 @@
 
 ## 2. Create .exe
 
-For create exe file use :
+For create .exe file use :
 
 - Cx_freeze : 
 
