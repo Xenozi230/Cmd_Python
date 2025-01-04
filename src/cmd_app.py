@@ -1,8 +1,8 @@
 import requests
 from prettytable import PrettyTable
-import colorama
 from colorama import Fore, Style
 import os 
+from datetime import datetime
 
 def get_crypto_prices(crypto_ids):
     url = 'https://api.coingecko.com/api/v3/simple/price'
@@ -19,7 +19,7 @@ def display_prices(prices):
     table.field_names = ["Crypto-monnaie", "Prix (USD)"]
     for crypto, price_info in prices.items():
         table.add_row([crypto.capitalize(), price_info['usd']])
-    print(table )
+    print(table)
 
 def color_changer(colors):
     color = {
@@ -32,6 +32,10 @@ def color_changer(colors):
     }
     return color.get(colors.lower(), Fore.RESET)
 
+def get_time():
+    now = datetime.now() 
+    Time_date = now.strftime("%d-%m-%Y / %H:%M:%S") 
+    return f"{Time_date}"
 
 def main():
     print("Welcome to the Cmd app !")
@@ -50,6 +54,7 @@ def main():
             print(actual_color +"Avaible commands :" + Style.RESET_ALL)
             print(actual_color +"- color (to change the cmd color)"+ Style.RESET_ALL)
             print(actual_color +"- crypto (to see the price of crypto-monaie in live)"+ Style.RESET_ALL)
+            print(actual_color +"- time (to see the date and time)"+ Style.RESET_ALL)
             print(actual_color +"- exit (to quit the cmd app)"+ Style.RESET_ALL)
 
         elif commands.startswith("color"):
@@ -57,13 +62,17 @@ def main():
                 _, couleur = commands.split() 
                 actual_color = color_changer(couleur)
                 print(color_changer(couleur), end="")  
-            except ValueError: 
+            except: 
                 print("Usage: color <couleur>")
 
         elif commands == "crypto":
-            crypto_ids = ['bitcoin', 'ethereum', 'ripple', 'litecoin', 'cardano']
+            crypto_ids = ['bitcoin', 'ethereum', 'ripple', 'litecoin', 'cardano', 'solana']
             prices = get_crypto_prices(crypto_ids)
             display_prices(prices)
+
+        elif commands == "time":
+            Time_date = get_time() 
+            print(actual_color + Time_date + Style.RESET_ALL)
 
         else:
             print("Unrecognized command type 'help' to see the avaible commands")
