@@ -11,6 +11,7 @@
 - `color` : to change the cmd color 
 - `crypto`: to see the price of crypto-monaie in live
 - `time`: to see the date en time 
+- `password`: to generate password 
 - `exit`: to quit cmd app   
 
 
