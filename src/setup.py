@@ -9,7 +9,7 @@ options = {
 }
 
 executables = [
-    Executable('main.py', base=None)
+    Executable('cmd_app.py', base=None)
 ]
 
 setup(

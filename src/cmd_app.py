@@ -40,7 +40,7 @@ def get_time():
     Time_date = now.strftime("%d-%m-%Y / %H:%M:%S") 
     return f"{Time_date}"
 
-def password_generator(lenght = 12):
+def password_generator(lenght = 15):
     caracteres = string.ascii_letters + string.digits + string.punctuation
     password = ''.join(secrets.choice(caracteres) for i in range(lenght))
     return password
