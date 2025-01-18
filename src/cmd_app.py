@@ -63,15 +63,15 @@ def get_terminal_width():
     return os.get_terminal_size().columns
 
 
-def generate_random_line_utf32(width):
-    japanese_characters = list("        1 0 ")
-    return ''.join(random.choice(japanese_characters + [' ']) for _ in range(width))
+def generate_random_line(width):
+    characters = list("        1 0 ")
+    return ''.join(random.choice(characters + [' ']) for _ in range(width))
 
 def matrix_effect(speed=0.05):  
     try:
         while True:
             width = get_terminal_width()
-            print(generate_random_line_utf32(width))
+            print(generate_random_line(width))
             time.sleep(speed)
     except KeyboardInterrupt:
         print("\nMatrix effect stopped")
