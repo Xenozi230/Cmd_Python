@@ -6,6 +6,7 @@ from datetime import datetime
 import secrets
 import string 
 import argparse
+import base64
 
 def get_crypto_prices(crypto_ids):
     url = 'https://api.coingecko.com/api/v3/simple/price'
@@ -45,6 +46,18 @@ def password_generator(lenght = 15):
     password = ''.join(secrets.choice(caracteres) for i in range(lenght))
     return password
 
+def encoding_message(message):
+    encoded_message = base64.b64encode(message.encode()).decode()
+    return encoded_message
+
+def decoding_message(encoded_message):
+    try:
+        decoded_bytes = base64.b64decode(encoded_message.encode("utf-8"))
+        return decoded_bytes.decode("utf-8")
+    except Exception as e:
+        return f"Erreur de décodage : {e}"
+    
+
 def main():
     print("Welcome to the Cmd app !")
     print("Type 'help' to see the avaible commands")
@@ -64,7 +77,10 @@ def main():
             print(actual_color +"- crypto (to see the price of crypto-monaie in live)"+ Style.RESET_ALL)
             print(actual_color +"- time (to see the date and time)"+ Style.RESET_ALL)
             print(actual_color +"- password (to generate a password)"+ Style.RESET_ALL)
+            print(actual_color +"- encoding (to encode a message or password)"+ Style.RESET_ALL)
+            print(actual_color +"- decoding (to decode a message or password)"+ Style.RESET_ALL)
             print(actual_color +"- exit (to quit the cmd app)"+ Style.RESET_ALL)
+            
         
         elif commands.startswith("color"):
             try: 
@@ -86,7 +102,16 @@ def main():
         elif commands == "password":
             password = password_generator()
             print(actual_color + password + Style.RESET_ALL)
-
+            
+        elif commands.startswith("encoding"):
+            result = encoding_message(commands.split(" ", 1)[1])
+            print(f"Encoded message : {result}")
+        
+        elif commands.startswith("decoding"):
+            result = decoding_message(commands.split(" ", 1)[1])    
+            print(f"Decoded message : {result}")
+            
+            
         else:
             print("Unrecognized command type 'help' to see the avaible commands")
             
