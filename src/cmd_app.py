@@ -7,6 +7,8 @@ import secrets
 import string 
 import argparse
 import base64
+import time
+import random
 
 def get_crypto_prices(crypto_ids):
     url = 'https://api.coingecko.com/api/v3/simple/price'
@@ -57,6 +59,22 @@ def decoding_message(encoded_message):
     except Exception as e:
         return f"Erreur de décodage : {e}"
     
+def get_terminal_width():
+    return os.get_terminal_size().columns
+
+
+def generate_random_line_utf32(width):
+    japanese_characters = list("        1 0 ")
+    return ''.join(random.choice(japanese_characters + [' ']) for _ in range(width))
+
+def matrix_effect(speed=0.05):  
+    try:
+        while True:
+            width = get_terminal_width()
+            print(generate_random_line_utf32(width))
+            time.sleep(speed)
+    except KeyboardInterrupt:
+        print("\nMatrix effect stopped")
 
 def main():
     print("Welcome to the Cmd app !")
@@ -79,6 +97,7 @@ def main():
             print(actual_color +"- password (to generate a password)"+ Style.RESET_ALL)
             print(actual_color +"- encoding (to encode a message or password)"+ Style.RESET_ALL)
             print(actual_color +"- decoding (to decode a message or password)"+ Style.RESET_ALL)
+            print(actual_color +"- matrix (to see the matrix effect and crtl+c for stop this effect)"+ Style.RESET_ALL)
             print(actual_color +"- exit (to quit the cmd app)"+ Style.RESET_ALL)
             
         
@@ -110,7 +129,9 @@ def main():
         elif commands.startswith("decoding"):
             result = decoding_message(commands.split(" ", 1)[1])    
             print(f"Decoded message : {result}")
-            
+        
+        elif commands == "matrix":
+            matrix_effect()
             
         else:
             print("Unrecognized command type 'help' to see the avaible commands")

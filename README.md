@@ -14,6 +14,7 @@
 - `password`: to generate password 
 - `encoding`: to encode word or phrase
 - `decoding`: to decode your word or phrase encode 
+- `matrix` (to see the matrix effect and crtl+c for stop this effect)
 - `exit`: to quit cmd app   
 
 
