@@ -9,6 +9,7 @@ import argparse
 import base64
 import time
 import random
+order_history = []
 
 def get_crypto_prices(crypto_ids):
     url = 'https://api.coingecko.com/api/v3/simple/price'
@@ -76,6 +77,7 @@ def matrix_effect(speed=0.05):
     except KeyboardInterrupt:
         print("\nMatrix effect stopped")
 
+
 def main():
     print("Welcome to the Cmd app !")
     print("Type 'help' to see the avaible commands")
@@ -84,6 +86,7 @@ def main():
 
     while True:
         commands = input(f"{actual_color}Cmd > ").strip()
+        order_history.append(commands)
 
         if commands == "exit":
             print(Style.RESET_ALL)
@@ -98,9 +101,9 @@ def main():
             print(actual_color +"- encoding (to encode a message or password)"+ Style.RESET_ALL)
             print(actual_color +"- decoding (to decode a message or password)"+ Style.RESET_ALL)
             print(actual_color +"- matrix (to see the matrix effect and crtl+c for stop this effect)"+ Style.RESET_ALL)
+            print(actual_color +"- history (to see the hystory of the commands)"+ Style.RESET_ALL)
             print(actual_color +"- exit (to quit the cmd app)"+ Style.RESET_ALL)
-            
-        
+                  
         elif commands.startswith("color"):
             try: 
                 _, couleur = commands.split() 
@@ -131,7 +134,13 @@ def main():
             print(f"Decoded message : {result}")
         
         elif commands == "matrix":
-            matrix_effect()
+            matrix_effect() 
+        
+        elif commands == "history":
+            print(actual_color + "Order History :" + Style.RESET_ALL)
+            for idx, cmd in enumerate(order_history, start=1):
+                print(f"{actual_color}{idx}. {cmd}")
+            
             
         else:
             print("Unrecognized command type 'help' to see the avaible commands")
