@@ -65,7 +65,7 @@ def get_terminal_width():
 
 
 def generate_random_line(width):
-    characters = list("        1 0 ")
+    characters = list(" あ	か	さ	た	な	は	ま	や	らわがざだば	 き	しちにひみりぎじぢ	び	ぴ	く	す	つ	ぬ	ふ	むゆるぐずづぶ	ぷ	け	せ	て	ね	へめ	れ	げ	ぜ	で	べ	ぺ  このもよろごぞどぼぽあいうえ お	やゆ	よ	わ")     
     return ''.join(random.choice(characters + [' ']) for _ in range(width))
 
 def matrix_effect(speed=0.05):  
